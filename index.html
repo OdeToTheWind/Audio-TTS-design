@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTS Tools Models</title>
+    <title>TTS Tools Audio Models</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -85,15 +85,17 @@
                     </form>
                 </div>
             </div>
+            
+            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+            </div>
             <div id="myModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <span class="close" id="closeModal">&times;</span>
                     <div class="player">
                         <audio class="audio_tag" id="audio" controls style="display: none;"></audio>
                     </div>
-                    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
-                        <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -165,13 +167,13 @@
     // Prevent form submission for this example
     const customForm = document.getElementById('customForm');
         customForm.addEventListener('submit', async (e) => {
+            
+    $("#loadingIndicator").show(); // Show loading indicator
             e.preventDefault();
             const selectedTab = wordBoxSelect.value;
             const selectedCheckbox = Array.from(genderRadios).find(radio => radio.checked).value;
             const selectedRadio = Array.from(document.querySelectorAll('input[name="radioOption"]')).find(option => option.checked).value;
-
-            modal.style.display = 'block';
-            $("#loadingIndicator").show(); // Show loading indicator
+            
 
             const text = document.querySelector('#text').value;
             const url = `https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/${selectedTab}-${selectedCheckbox}-${selectedRadio}-audio`;
@@ -199,12 +201,22 @@
                 console.error('Error generating audio:', error);
             } finally {
                 $("#loadingIndicator").hide(); // Hide loading indicator on success or error
+                modal.style.display = 'block';
             }
         });
 
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+        
+        // Add this JavaScript code inside your script tag
+//const closeModal = document.getElementById('closeModal');
+
+closeModal.addEventListener('click', () => {
+    // Close the modal
+    modal.style.display = 'none';
+    
+    // Refresh the page
+    location.reload();
+});
+
     </script>
 </body>
 </html>
