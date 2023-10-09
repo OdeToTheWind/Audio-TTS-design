@@ -212,7 +212,8 @@
 closeModal.addEventListener('click', () => {
     // Close the modal
     modal.style.display = 'none';
-    
+    // Reset the form to clear previous data
+    customForm.reset();
     // Refresh the page
     location.reload();
 });
