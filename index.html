@@ -7,99 +7,157 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="background">
-        <h1 class="heading">Text-to-Speech</h1>
-        <div class="line-bt-container">
-            <div>
-                <div class="d-flex align-items-center">
-                    <div class="common-line" style="background-color: rgb(229, 0, 0);"></div>
-                    <div class="common-line" style="background-color: rgb(192, 41, 0);"></div>
-                    <div class="common-line" style="background-color: rgb(247, 128, 88);"></div>
-                    <div class="common-line" style="background-color: rgb(0, 184, 189);"></div>
-                    <div class="common-line" style="background-color: rgb(0, 235, 233);"></div>
-                    <div class="common-line" style="background-color: rgb(35, 182, 255);"></div>
-                    <div class="common-line" style="background-color: rgb(76, 150, 233);"></div>
-                    <div class="common-line" style="background-color: rgb(0, 38, 144);"></div>
-                    <div class="common-line" style="background-color: rgb(0, 12, 101);"></div>
-                </div>
-            </div>
+    </head>
+    <body>
+        <div class="loader-indicator">
+            <h2 class="loader-text">Loading... Coming Soon</h2>
         </div>
-
-        <div class="form-container">
-            <div class="form-box">
-                    <form class="form_str" id="customForm">
-                        <div>
-                            <fieldset>
-                                <legend for="wordBox">Choose a Language:</legend>
-                                <select id="wordBox" name="wordBox">
-                                    <option value="...">Select Here ... </option>
-                                    <option value="bn">Bengali</option>
-                                    <!-- <option value="bh">Bhojpuri</option> -->
-                                    <option value="ch">Chhattisgarhi</option>
-                                    <option value="hi">Hindi</option>
-                                    <!-- <option value="mt">Maithili</option> -->
-                                    <option value="mr">Marathi</option>
-                                    <!-- <option value="mg">Magadhi</option> -->
-                                    <option value="kn">Kannada</option>
-                                    <option value="te">Telugu</option>
-                                </select>
-                            </fieldset> 
-                            
-                            
-                        </div>
-                
-                        <div>
-                            <!-- Step 2: Gender selection -->
-                            <!-- <label>Gender:</label>
-                            <input type="radio" name="gender" value="mal">Male
-                            <input type="radio" name="gender" value="fem">Female -->
-
-                            <fieldset>
-                                <legend>Choose a Gender:</legend>
-                                <input type="radio" id="male" name="gender" value="mal">
-                                <label for="male">Male</label>
-                                <input type="radio" id="female" name="gender" value="fem">
-                                <label for="female">Female</label>
-                            </fieldset>
-                            
-                        </div>
-                        
-                
-                        <!-- Step 3: Dynamic radio buttons -->
-                        
-                        <fieldset id="radioButtons" class="hidden">
-                            <legend>Choose a Model:</legend>
-                            <div id="dynamicRadioButtons">
-                                <!-- Radio buttons will be generated here -->
-                            </div>
-                        </fieldset>
-                
-                        <div>
-                            <input  class="textarea_box" type="text" id="text" name="text" placeholder="Enter your text here...">
-                        </div>
-                        <div>
-                            <button class="submit_button" type="submit" id="audioButton">Generate Audio</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
-                <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
-            </div>
-            <div id="myModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" id="closeModal">&times;</span>
-                    <div class="player">
-                        <audio class="audio_tag" id="audio" controls style="display: none;"></audio>
+    
+        <div class="background" style="display: none;">
+            <h1 class="heading">Text-to-Speech</h1>
+            <div class="line-bt-container">
+                <div>
+                    <div class="d-flex align-items-center">
+                        <div class="common-line" style="background-color: rgb(229, 0, 0);"></div>
+                        <div class="common-line" style="background-color: rgb(192, 41, 0);"></div>
+                        <div class="common-line" style="background-color: rgb(247, 128, 88);"></div>
+                        <div class="common-line" style="background-color: rgb(0, 184, 189);"></div>
+                        <div class="common-line" style="background-color: rgb(0, 235, 233);"></div>
+                        <div class="common-line" style="background-color: rgb(35, 182, 255);"></div>
+                        <div class="common-line" style="background-color: rgb(76, 150, 233);"></div>
+                        <div class="common-line" style="background-color: rgb(0, 38, 144);"></div>
+                        <div class="common-line" style="background-color: rgb(0, 12, 101);"></div>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-        <script>
+    
+            <div class="form-container">
+                <div class="form-box">
+                        <form class="form_str" id="customForm">
+                            <div>
+                                <fieldset>
+                                    <legend for="wordBox">Choose a Language:</legend>
+                                    <select id="wordBox" name="wordBox">
+                                        <option value="...">Select Here ... </option>
+                                        <option value="bn">Bengali</option>
+                                        <!-- <option value="bh">Bhojpuri</option> -->
+                                        <option value="ch">Chhattisgarhi</option>
+                                        <option value="hi">Hindi</option>
+                                        <!-- <option value="mt">Maithili</option> -->
+                                        <option value="mr">Marathi</option>
+                                        <!-- <option value="mg">Magadhi</option> -->
+                                        <option value="kn">Kannada</option>
+                                        <option value="te">Telugu</option>
+                                    </select>
+                                </fieldset> 
+                                
+                                
+                            </div>
+                    
+                            <div>
+                                <!-- Step 2: Gender selection -->
+                                <!-- <label>Gender:</label>
+                                <input type="radio" name="gender" value="mal">Male
+                                <input type="radio" name="gender" value="fem">Female -->
+    
+                                <fieldset>
+                                    <legend>Choose a Gender:</legend>
+                                    <input type="radio" id="male" name="gender" value="mal">
+                                    <label for="male">Male</label>
+                                    <input type="radio" id="female" name="gender" value="fem">
+                                    <label for="female">Female</label>
+                                </fieldset>
+                                
+                            </div>
+                            
+                    
+                            <!-- Step 3: Dynamic radio buttons -->
+                            
+                            <fieldset id="radioButtons" class="hidden">
+                                <legend>Choose a Model:</legend>
+                                <div id="dynamicRadioButtons">
+                                    <!-- Radio buttons will be generated here -->
+                                </div>
+                            </fieldset>
+                    
+                            <div>
+                                <input  class="textarea_box" type="text" id="text" name="text" placeholder="Enter your text here...">
+                            </div>
+                            <div>
+                                <button class="submit_button" type="submit" id="audioButton">Generate Audio</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                    <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+                </div>
+                <div id="myModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <div class="player">
+                            <audio class="audio_tag" id="audio" controls style="display: none;"></audio>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+    <script src="function.js"></script>   
+
+    <script>
+        // List of texts and URLs for your API requests
+        const requests = [
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/ch-mal-vits-audio' },            
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/ch-fem-vits-audio' },
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/hi-mal-vits-audio' },            
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/hi-fem-vits-audio' },
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/hi-fem-glowtts-audio' },
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/mr-mal-vits-audio' },            
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/mr-fem-vits-audio' },            
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/mr-mal-glowtts-audio' },            
+            { text: "क्या आप आज दोपहर का खाना बना सकती हैं और कुछ खाना खा सकती हैं", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/mr-fem-glowtts-audio' },
+            
+            { text: "এটা কি ব্যাঙ্গালোরের দিকে যাওয়ার রাস্তা", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/bn-mal-vits-audio' },            
+            { text: "এটা কি ব্যাঙ্গালোরের দিকে যাওয়ার রাস্তা", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/bn-fem-vits-audio' },
+            
+            { text: "ಇದು ಬೆಂಗಳೂರಿಗೆ ಹೋಗುವ ದಾರಿ", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/kn-mal-vits-audio' },            
+            { text: "ಇದು ಬೆಂಗಳೂರಿಗೆ ಹೋಗುವ ದಾರಿ", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/kn-fem-vits-audio' },
+
+            { text: "ఇది కారులో బెంగళూరు వైపు వెళ్లే మార్గం", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/te-mal-vits-audio' },            
+            { text: "ఇది కారులో బెంగళూరు వైపు వెళ్లే మార్గం", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/te-fem-vits-audio' },
+            
+            { text: "ఇది కారులో బెంగళూరు వైపు వెళ్లే మార్గం", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/te-mal-glowtts-audio' },            
+            { text: "ఇది కారులో బెంగళూరు వైపు వెళ్లే మార్గం", url: 'https://xckszodvuk.execute-api.ap-south-1.amazonaws.com/api/te-fem-glowtts-audio' },
+
+            
+            // Add more requests here
+        ];
+
+        // An array to store promises for each request
+        const promises = [];
+
+        // Create promises for each request and store them in the 'promises' array
+        requests.forEach(request => {
+            const promise = makeApiRequest(request.text, request.url);
+            promises.push(promise);
+        });
+
+        // Use Promise.all to wait for all promises to resolve
+        Promise.all(promises)
+            .then(() => {
+                // API requests are complete, hide the loading indicator and show the form container
+                document.querySelector('.loader-indicator').style.display = 'none';
+                document.querySelector('.background').style.display = 'block';
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('API request error:', error);
+                // Hide loading indicator and show an error message or take other appropriate actions
+            });
+
+
             const wordBoxSelect = document.getElementById('wordBox');
             const genderRadios = document.getElementsByName('gender');
             const radioButtonsDiv = document.getElementById('radioButtons');
@@ -219,5 +277,6 @@ closeModal.addEventListener('click', () => {
 });
 
     </script>
+
 </body>
 </html>
