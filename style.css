@@ -309,5 +309,28 @@
             border: 1px solid #ccc; /* Border around the legend */
             border-radius: 5px; /* Rounded corners for the legend */
         }
+     
+/* Styles for the loading indicator */
+.loader-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+}
 
+/* Add animation styles */
+.loader-text {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out 0.5s infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
         
